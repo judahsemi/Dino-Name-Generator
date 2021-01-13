@@ -107,6 +107,11 @@ def originality(n_samp, corpus, sampler, model, ix_list, *args, **kwargs):
 
         if samp in corpus:
             duplicates.append(samp)
+
+    recall = 100 * len(duplicates) / n_samp
+    print("Duplicates: {} of {}".format(len(duplicates), n_samp))
+    print("{:6.2f}% recall".format(recall))
+    print("{:6.2f}% original".format(100 - recall))
     return samples, duplicates
 
 
